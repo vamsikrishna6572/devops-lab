@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-lab-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-lab-app
+  template:
+    metadata:
+      labels:
+        app: devops-lab-app
+    spec:
+      containers:
+      - name: app
+        image: 108471662079.dkr.ecr.ap-south-1.amazonaws.com/devops-lab-app:v1
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: ecr-secret
